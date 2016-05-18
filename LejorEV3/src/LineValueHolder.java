@@ -9,6 +9,7 @@ public class LineValueHolder {
 
 	public void setWhite(float value) {
 		white = value;
+		System.out.println(white);
 	}
 
 	public float getWhite() {
@@ -17,6 +18,7 @@ public class LineValueHolder {
 
 	public void setBlack(float value) {
 		black = value;
+		System.out.println(black);
 	}
 
 	public float getBlack() {

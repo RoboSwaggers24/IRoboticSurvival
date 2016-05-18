@@ -26,7 +26,7 @@ public class LFJfedor {
 		if (message != null) {
 			LCD.drawString(message, 0, 2, false);
 		}
-		Sound.twoBeeps();
+		//Sound.twoBeeps();
 		Button.ENTER.waitForPressAndRelease();
 	}
 

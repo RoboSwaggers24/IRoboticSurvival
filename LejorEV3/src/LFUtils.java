@@ -25,7 +25,6 @@ public class LFUtils {
 		float[] samples = getSample();
 		float sum = 0;
 		for (int i = 0; i < samples.length; i++) {
-			System.out.println(samples[i]);
 			sum += samples[i];	
 		}
 		return sum / samples.length;

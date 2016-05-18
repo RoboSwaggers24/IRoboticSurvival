@@ -13,7 +13,7 @@ public class Cruiser extends Thread {
 	float turn;
 	int cTurn;
 	int bTurn;
-	float power = 222;
+	float power = 100;
 	float threshold;
 	
 	public Cruiser(LFJfedor lfjf) {
@@ -27,19 +27,46 @@ public class Cruiser extends Thread {
 
 		
 		while (!Button.ESCAPE.isDown()) {
+			if(Button.UP.isDown()){
+				power = power + 10;
+				System.out.println("power is: " + power);
+			}
+			if(Button.DOWN.isDown()){
+				power = power - 10;
+				System.out.println("power is: " + power);
+			}
 			
 			threshold = (lfjf.lvh.getBlack() + lfjf.lvh.getWhite())/2;
 			color = LFUtils.getAvgLightValue();
-			cTurn = (int) (power - (2*power) * (threshold-color)/(lfjf.lvh.getWhite() - lfjf.lvh.getBlack()));
-			mC.setSpeed(cTurn);
-			mC.forward();
+			double turn = (2.5 * power) * ((threshold-color)/(lfjf.lvh.getWhite() - lfjf.lvh.getBlack()));
+			
+			cTurn = (int) (power - turn);
+			bTurn = (int) (power + turn);
+			
+				
+			if (cTurn > 10){
+				mC.setSpeed(cTurn);
+				mC.forward();
+			}
+			else{
+				mC.setSpeed((int) (0.5 *bTurn));
+				mC.backward();
+			}
 
-			bTurn = (int) (power + (2*power) * (threshold-color)/(lfjf.lvh.getWhite() - lfjf.lvh.getBlack()));
-			mB.setSpeed(bTurn);
-			mB.forward();
-
+			
+			if (bTurn > 10){
+				mB.setSpeed(bTurn);
+				mB.forward();
+			}
+			else{
+				mB.setSpeed((int) (0.5 *cTurn));
+				mB.backward();
+			}
 
 		}
+		mB.close();
+		mC.close();
+		lfjf.colorSensor.close();
 	}
 
 }
