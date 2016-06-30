@@ -4,6 +4,9 @@ public class LineValueHolder {
 
 	private float white;
 	private float black;
+	private float red;
+	private float blue;
+	
 	public LineValueHolder() {
 	}
 
@@ -23,6 +26,22 @@ public class LineValueHolder {
 
 	public float getBlack() {
 		return black;
+	}
+
+	public void setBlue(float threshold) {
+		blue = threshold;
+		
+	}
+
+	public void setRed(float threshold) {
+		red = threshold;
+		
+	}
+	public float getRed() {
+		return red;
+	}
+	public float getBlue() {
+		return blue;
 	}
 
 }

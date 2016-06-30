@@ -29,5 +29,19 @@ public class LFUtils {
 		}
 		return sum / samples.length;
 	}
+	public static float getAvgAmbientLightValue() {
+		sampleProvider = colorSensor.getAmbientMode();
+        sampleSize = sampleProvider.sampleSize();
+		float[] samples = getSample();
+		float sum = 0;
+		for (int i = 0; i < samples.length; i++) {
+			sum += samples[i];	
+		}
+		return sum / samples.length;
+	}
+	
+	public static void closeColorSensor(){
+		colorSensor.close();
+	}
 
 }
