@@ -8,11 +8,26 @@ public class DataExchange {
 	
 	LineValueHolder lvh;
 	public boolean followLine = true;
-	RegulatedMotor mB = new EV3LargeRegulatedMotor(MotorPort.B);
-	RegulatedMotor mC = new EV3LargeRegulatedMotor(MotorPort.C);
-	EV3GyroSensor gyro = new EV3GyroSensor(SensorPort.S4);
+	public boolean foundRedPillar = false;
+	public boolean foundBluePillar = false;
+    public boolean checkingWhite = false;
+	public boolean carryFood = false;
+	public boolean homePillar = false;
+	public boolean maze = false;
+	public boolean grid = false;
+	// SINGLETION
+    private static DataExchange thisInstance = null;
+    
+    protected DataExchange(LineValueHolder lvh2) {
+    	// Exist only to defeat more then one instance
+    	this.lvh = lvh2;
+    }
 
-	public DataExchange(LineValueHolder lvh2) {
-		this.lvh = lvh2;
+	public static DataExchange getInstance() {
+		if (thisInstance == null) {
+			thisInstance = new DataExchange(new LineValueHolder());
+		}
+		return thisInstance;
 	}
+	///////////////////////////////////////
 }

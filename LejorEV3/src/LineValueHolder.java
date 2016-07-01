@@ -18,6 +18,15 @@ public class LineValueHolder {
 	public float getWhite() {
 		return white;
 	}
+	
+	public void swapColors() {
+		float tempBlack = this.getBlack();
+		float tempWhite = this.getWhite();
+		
+		this.setBlack(tempWhite);
+		this.setWhite(tempBlack);
+		Utilities.getInstance().mB.rotate(50);
+	}
 
 	public void setBlack(float value) {
 		black = value;
